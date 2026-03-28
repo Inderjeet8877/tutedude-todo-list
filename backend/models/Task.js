@@ -4,18 +4,17 @@ const taskSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'Please add a task title'],
-      trim: true,
-      maxlength: [100, 'Title cannot be more than 100 characters'],
+      // Need to make title required so empty tasks aren't saved
+      required: true, 
     },
     description: {
       type: String,
-      required: [true, 'Please add a task description'],
-      trim: true,
-      maxlength: [500, 'Description cannot be more than 500 characters'],
+      // Same for description, we want details
+      required: true,
     },
     status: {
       type: String,
+      // Status should only be pending or completed
       enum: ['pending', 'completed'],
       default: 'pending',
     },
